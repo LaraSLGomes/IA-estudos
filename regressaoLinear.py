@@ -47,4 +47,23 @@ class LinearRegression:
         print(f"Coeficiente angular = {self.b_1}") 
 
 
+dados = np.loadtxt("dados.csv", delimiter = ",", skiprows = 1)
+print(dados)
 
+import numpy as np
+
+dados = np.loadtxt("dados.csv", delimiter=",", skiprows=1)
+print(dados)
+
+x = dados[:, 0]
+y = dados[:, 1]
+
+modelo = LinearRegression(x, y)
+modelo.fit(x, y)
+
+x_test = np.array([23])
+pred = modelo.predict(x_test)
+
+print(f"Coeficiente angular (b1): {modelo.coef_[0]:}")
+print(f"Intercepto (b0): {modelo.intercept_:}")
+print(f"Predição para X = 37: {pred[0]:}")

@@ -25,4 +25,21 @@ denominador = np.sum((ydata - ybar)**2)
 r_2 = 1 - numerador / denominador
 print("o coeficiente de determinacao R é:", r_2)
 
+class LinearRegression:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.b_0 = None
+        self.b_1 = None 
+    def fit(self): #treinamento
+        xbar = np.mean(self.x)
+        ybar = np.mean(self.y)
+
+        self.b_1 = np.sum((self.y - ybar) * (self.x - xbar)) / np.sum((self.x - xbar)**2)
+
+        self.b_0 = ybar - self.b_1 * xbar
+
+
+
+
 

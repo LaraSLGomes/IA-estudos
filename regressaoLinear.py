@@ -18,3 +18,11 @@ print("o intercepto é:", b_0)
 #funcao estimada 
 y_pred = b_0 + b_1 * xdata
 print("a funcao estimada é:", y_pred)
+
+# coeficiente de determinacao R
+soma_erros = np.sum((ydata - y_pred)**2)
+soma_total = np.sum((ydata - ybar)**2)
+r_2 = 1 - soma_erros / soma_total
+print("o coeficiente de determinacao R é:", r_2)
+
+

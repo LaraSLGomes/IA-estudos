@@ -15,3 +15,6 @@ b_1 = np.sum((ydata-ybar) * (xdata-xbar)) / np.sum((xdata-xbar)**2)
 print("o valor do coeficiente angular:", b_1)
 b_0 = ybar - b_1 * xbar
 print("o intercepto é:", b_0)
+#funcao estimada 
+y_pred = b_0 + b_1 * xdata
+print("a funcao estimada é:", y_pred)

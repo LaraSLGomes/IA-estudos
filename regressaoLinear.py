@@ -36,10 +36,15 @@ class LinearRegression:
         ybar = np.mean(self.y)
 
         self.b_1 = np.sum((self.y - ybar) * (self.x - xbar)) / np.sum((self.x - xbar)**2)
-
         self.b_0 = ybar - self.b_1 * xbar
+        return self
 
-
+    def predict(self, x_new):
+        return self.b_0 + self.b_1 * np.array(x_new)
+    def summary(self):
+        print(f"Modelo: y = {self.b_0:.2f} + {self.b_1:.2f} * x")
+        print(f"Intercepto = {self.b_0}")
+        print(f"Coeficiente angular = {self.b_1}") 
 
 
 

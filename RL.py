@@ -10,10 +10,11 @@ y = np.array([9.95, 24.45, 31.75, 34, 25.02, 16.86, 14.38, 9.6, 24.35, 27.5])
 print(x1.shape[0])
 X = np.column_stack((np.ones(x2.shape[0]), x1, x2))
 class MRegression:
-    def __init__(sel, x, y):
-        self.x = X
+    def __init__(self, X, y):
+        self.X = X
         self.y = y
-        sel.beta = None
+        self.N = X.shape[0]
+        self.beta = None
     def fit(self):
         self.X = np.column_stack((np.ones(self.N), self.X))
         self.beta = np.linalg.pinv(self.X.T @ self.X) @ self.X.T @ self.y
@@ -21,7 +22,7 @@ class MRegression:
         #Moore Pensore
     def predict(self, X_new):
         N = X_new.shape[0]
-        X_new = np.column_stack(np.ones(N), X_new)
+        X_new = np.column_stack((np.ones(N), X_new))
         return X_new @ self.beta
 
 X = np.column_stack((x1, x2))
@@ -33,7 +34,7 @@ print(y_pred)
 
 def r2_score(y_true, y_pred):
     numerador = np.sum((y_true-y_pred)**2)
-    denominador = np.sum((y_true-np.mena(y_pred))**2)
+    denominador = np.sum((y_true-np.mean(y_true))**2)
     r2_score = 1 -  (numerador/denominador)
     return r2_score
 print(r2_score(y, y_pred))
@@ -41,3 +42,4 @@ print(r2_score(y, y_pred))
 fig = go.Figure()
 fig.add_scatter3d(x=x1, y=x2, z=y, mode="markers", marker= dict(color="red", size=5), name="Dados originais")
 fig.add_scatter3d(x=x1, y=x2, z=y_pred, mode="markers", marker= dict(color="green", size=5), name="Dados previstos")
+fig.show()

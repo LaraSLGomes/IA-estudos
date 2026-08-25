@@ -20,3 +20,10 @@ class MRegression:
         N = X_new.shape[0]
         X_new = np.column_stack(np.ones(N), X_new)
         return X_new @ self.beta
+
+X = np.column_stack((x1, x2))
+modelo = MRegression()
+modelo.fit()
+print("Os parametros sao: ", modelo.beta)
+y_pred = modelo.predict(X)
+print(y_pred)

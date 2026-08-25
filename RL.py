@@ -13,5 +13,10 @@ class MRegression:
         sel.beta = None
     def fit(self):
         self.X = np.column_stack((np.ones(self.N), self.X))
-    def predict(self):
-        print()
+        self.beta = np.linalg.pinv(self.X.T @ self.X) @ self.X.T @ self.y
+        #pseudo inversa (casos sem matriz quadratica, nao possui inversa)
+        #Moore Pensore
+    def predict(self, X_new):
+        N = X_new.shape[0]
+        X_new = np.column_stack(np.ones(N), X_new)
+        return X_new @ self.beta

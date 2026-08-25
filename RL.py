@@ -27,3 +27,10 @@ modelo.fit()
 print("Os parametros sao: ", modelo.beta)
 y_pred = modelo.predict(X)
 print(y_pred)
+
+def r2_score(y_true, y_pred):
+    numerador = np.sum((y_true-y_pred)**2)
+    denominador = np.sum((y_true-np.mena(y_pred))**2)
+    r2_score = 1 -  (numerador/denominador)
+    return r2_score
+print(r2_score(y, y_pred))

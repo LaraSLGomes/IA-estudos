@@ -1,4 +1,7 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
 
 x1 = np.array([2, 8, 11, 10, 8, 4, 2, 2, 9, 8])
 x2 = np.array([50, 110, 120, 550, 295, 200, 375, 52, 100, 300])
@@ -34,3 +37,7 @@ def r2_score(y_true, y_pred):
     r2_score = 1 -  (numerador/denominador)
     return r2_score
 print(r2_score(y, y_pred))
+
+fig = go.Figure()
+fig.add_scatter3d(x=x1, y=x2, z=y, mode="markers", marker= dict(color="red", size=5), name="Dados originais")
+fig.add_scatter3d(x=x1, y=x2, z=y_pred, mode="markers", marker= dict(color="green", size=5), name="Dados previstos")

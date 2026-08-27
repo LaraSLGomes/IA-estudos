@@ -43,3 +43,6 @@ fig = go.Figure()
 fig.add_scatter3d(x=x1, y=x2, z=y, mode="markers", marker= dict(color="red", size=5), name="Dados originais")
 fig.add_scatter3d(x=x1, y=x2, z=y_pred, mode="markers", marker= dict(color="green", size=5), name="Dados previstos")
 fig.show()
+
+print(np.linspace(min(x1), max(x1), 2))
+print(np.linspace(min(x2), max(x2), 2))

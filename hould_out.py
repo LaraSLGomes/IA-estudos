@@ -22,6 +22,13 @@ def train_test_split(X, y, test_size=0.3, random_state=42):
     train_indices = indices[n_test:]
     print("indices de treino", train_indices)
 
+    if X.ndim == 1:
+        X_train, X_test = X[train_indices], X[test_indices]
+    else:
+        X_train, X_test = X[train_indices, :], X[test_indices, :]
+    y_train, y_test = y[train_indices], y[test_indices]
+
+    return X_train, X_test, y_train, y_test
 
 x1 = np.array([2, 8, 11, 10, 8, 4, 2, 2, 9, 8])
 x2 = np.array([50, 110, 120, 550, 295, 200, 375, 52, 100, 300])

@@ -52,3 +52,12 @@ x1_grid, x2_grid = np.meshgrid( #cria varias coordenadas de acordo com a regiao 
 ) # cria a malha de coordenadas para descobrir como o modelo se comporta nessa regiao 
 y_grid = modelo.beta[0] + modelo.beta[1]*x1_grid + modelo.beta[2]*x2_grid
 print(y_grid)
+#calcylar as previsoes para as coordenadas e usa os pontos para visualizar o hiperplano
+#descobrir como o modelo se comporta em todas as regioes
+fig = go.Figure()
+fig.add_scatter3d(x=x1, y=x2, z=y, mode="markers",
+                  marker = dict(color="red", size=5), name="Dados originais")
+fig.add_scatter3d(x=x1, y=x2, z=y_pred, mode="markers",
+                  marker = dict(color="green", size=5), name="Dados previstos")
+fig.add_surface(x=x1_grid, y=x2_grid, z=y_grid, opacity=0.5, name="Hiperplano")
+fig.show()

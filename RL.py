@@ -46,7 +46,9 @@ fig.show()
 
 #print(np.linspace(min(x1), max(x1), 2))
 #print(np.linspace(min(x2), max(x2), 2))
-x1_grid, x2_grid = np.meshgrid(
+x1_grid, x2_grid = np.meshgrid( #cria varias coordenadas de acordo com a regiao dos meus dados
     np.linspace(min(x1), max(x1), 10),
-    np.linspace(min(x1), max(x1), 10),
-)
+    np.linspace(min(x2), max(x2), 10),
+) # cria a malha de coordenadas para descobrir como o modelo se comporta nessa regiao 
+y_grid = modelo.beta[0] + modelo.beta[1]*x1_grid + modelo.beta[2]*x2_grid
+print(y_grid)

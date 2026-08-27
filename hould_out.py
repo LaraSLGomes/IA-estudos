@@ -21,4 +21,10 @@ def train_test_split(X, y, test_size=0.3, random_state=42):
     print("indices de teste", test_indices)
     train_indices = indices[n_test:]
     print("indices de treino", train_indices)
-    
+
+
+x1 = np.array([2, 8, 11, 10, 8, 4, 2, 2, 9, 8])
+x2 = np.array([50, 110, 120, 550, 295, 200, 375, 52, 100, 300])
+y = np.array([9.95, 24.45, 31.75, 34, 25.02, 16.86, 14.38, 9.6, 24.35, 27.5])
+X = np.column_stack((x1, x2))
+train_test_split(X, y, test_size=0.3, random_state=42)

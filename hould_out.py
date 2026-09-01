@@ -11,7 +11,7 @@ def train_test_split(X, y, test_size=0.3, random_state=42):
         np.random.seed(random_state)
     if len(X) != len(y):
         raise ValueError("X e y devem ter o mesmo tamanho")
-    n_samples = len(x)
+    n_samples = len(X)
     print("Amostra quantidade", n_samples)
     indices = np.random.permutation(n_samples)
     print("indices embaralhados", indices)
@@ -30,8 +30,28 @@ def train_test_split(X, y, test_size=0.3, random_state=42):
 
     return X_train, X_test, y_train, y_test
 
+class MRegression:
+    def __init__(self, X, y):
+        self.X = X 
+        self.y = y
+        self.beta = None
+        self.N = X.shape[0]
+    def fit(self):
+        self.X = np.column_stack((np.ones(self.N), self.X))
+        self.beta = np.linalg.pinv(self.X.T @ self.X) @ self.X.T @ self.y
+        #pseudo inversa (casos sem matriz quadratica, nao possui inversa)
+        #Moore Pensore
+    def predict(self, X_new):
+        N = X_new.shape[0]
+        X_new = np.column_stack((np.ones(N), X_new))
+        return X_new @ self.beta
+
 x1 = np.array([2, 8, 11, 10, 8, 4, 2, 2, 9, 8])
 x2 = np.array([50, 110, 120, 550, 295, 200, 375, 52, 100, 300])
 y = np.array([9.95, 24.45, 31.75, 34, 25.02, 16.86, 14.38, 9.6, 24.35, 27.5])
 X = np.column_stack((x1, x2))
-train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+print("Dados de treino X_train: ", X_train)
+print("Dados de teste X_test: ", X_test)
+print("Dados de treino y_train: ", y_train)
+print("Dados de teste y_test: ", y_test)

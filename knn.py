@@ -27,6 +27,7 @@ class KNN:
         k_indices = np.argsort(distances)[:self.k]
         k_nearest_labels = [self.y_train[i] for i in k_indices]
         if self.task == "classification":
+            unique, counts = np.unique(k_nearest_labels, return_counts=True)
             return unique[np.argmax(counts)]
         if self.task == "regression":
             return np.mean(k_nearest_labels)
@@ -34,7 +35,7 @@ class KNN:
             return ValueError("Tarefa sera regressao ou classificacao!")
 
     def predict(self, X_test):
-        predictions = [self.calculate_predict(x) for x in x_test]
+        predictions = [self.calculate_predict(x) for x in X_test]
         return predictions
 X_train = np.array([
     [1, 2],

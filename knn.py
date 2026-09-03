@@ -22,6 +22,8 @@ class KNN:
     x_test = [2.5, 2.5]
 
     def calculate_distances(x1, x2):
+        x1 = np.array(x1)
+        x2 = np.array(x2)
         return np.sqrt(np.sum((x1-x2)**2)) #euclidiana
     distances = [calculate_distances(x_test, x_train)
                  for x_train in X_train]

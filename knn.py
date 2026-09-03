@@ -18,3 +18,11 @@ class KNN:
                [2, 3],
                [3, 3],
                [10, 10]]
+    y_train = [0, 0, 1, 1]
+    x_test = [2.5, 2.5]
+
+    def calculate_distances(x1, x2):
+        return np.sqrt(np.sum((x1-x2)**2)) #euclidiana
+    distances = [calculate_distances(x_test, x_train)
+                 for x_train in X_train]
+    print(distances)

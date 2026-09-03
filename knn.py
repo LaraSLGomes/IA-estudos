@@ -33,9 +33,9 @@ class KNN:
         else:
             return ValueError("Tarefa sera regressao ou classificacao!")
 
-    # def predict(self, X_test):
-
-
+    def predict(self, X_test):
+        predictions = [self.calculate_predict(x) for x in x_test]
+        return predictions
 X_train = np.array([
     [1, 2],
     [2, 3],
@@ -63,3 +63,9 @@ k = 3
 k_indices = np.argsort(distances)[:k]
 
 print(k_indices)
+
+lista = ["maca","banana", "laranja", "maca", "maca"]
+unique, counts = np.unique(lista, return_counts=True)
+print("Valores unicos", unique)
+print("Contagem", counts)
+print([np.argmax(counts)])

@@ -10,4 +10,11 @@ class KNN:
         self.y_train = y_train
     def calculate_distances(self, x1, x2):
         return np.sqrt(np.sum((x1-x2)**2)) #euclidiana
-    
+    def calculate_predict(self, x):
+        distances = [self.calculate_distances(x, x_train)
+                     for x_train in self.X_train]
+    #def predict(self, X_test):
+    X_train = [[1, 2],
+               [2, 3],
+               [3, 3],
+               [10, 10]]

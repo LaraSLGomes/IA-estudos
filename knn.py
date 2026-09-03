@@ -28,3 +28,6 @@ class KNN:
     distances = [calculate_distances(x_test, x_train)
                  for x_train in X_train]
     print(distances)
+    k=3 
+    k_indices = np.argsort(distances)[:k]
+    print(k_indices)

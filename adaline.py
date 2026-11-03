@@ -10,5 +10,9 @@ class Adaline:
             for i in range(X.shape[0]):
                 x_i = X[i]
                 target = y[i]
+                output = self.net_input(x_i)
+                error = target - output
+                self.weights[1:] += self.learning_rate * error * x_i
+                self.weights[0] += self.learning_rate * error
     def net_input(self, X):
         return np.dot(X, self.weights[1:] + self.weights[0])

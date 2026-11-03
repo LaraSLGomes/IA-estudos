@@ -7,6 +7,7 @@ class Adaline:
         self.weights = np.zeros(1 + X.shape[1])
         self.cost = []
         for epochs in range(self.epochs):
+            cost = 0
             for i in range(X.shape[0]):
                 x_i = X[i]
                 target = y[i]
@@ -19,3 +20,5 @@ class Adaline:
             print(f"epochs {epochs} Cost {cost}")
     def net_input(self, X):
         return np.dot(X, self.weights[1:] + self.weights[0])
+
+    

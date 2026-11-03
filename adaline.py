@@ -14,5 +14,8 @@ class Adaline:
                 error = target - output
                 self.weights[1:] += self.learning_rate * error * x_i
                 self.weights[0] += self.learning_rate * error
+                cost += (error ** 2) / 2.0
+            self.cost.append(cost)
+            print(f"epochs {epochs} Cost {cost}")
     def net_input(self, X):
         return np.dot(X, self.weights[1:] + self.weights[0])
